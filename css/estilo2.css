@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url(../Img/fondodatos.jpg);
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(6, 81, 100, 0.87);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    padding: 0 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+header .logo-img {
+    width: 70px; 
+    height: auto;
+    border-radius: 50%;
+    margin-right: 10px; 
+}
+
+header .navbar ul {
+    list-style: none;
+}
+
+header .navbar ul li {
+    position: relative;
+    float: left;
+}
+
+header .navbar ul li a {
+    font-size: 20px;
+    padding: 20px;
+    color: #ffffff;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+header .navbar ul li a:hover,
+header .navbar ul li a:focus {
+    background: #dafffa;
+    color: #080808;
+}
+
+header .navbar ul li ul {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    background: rgba(24, 70, 129, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+header .navbar ul li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+#menu-bar {
+    display: none;
+}
+
+header label {
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+    display: none;
+}
+
+@media(max-width: 991px) {
+    header {
+        padding: 20px;
+    }
+
+    header label {
+        display: block;
+    }
+
+    header .navbar {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(24, 87, 150, 0.54);
+        border-top: 1px solid rgba(0,0,0,.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #menu-bar:checked ~ .navbar {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    header .navbar ul li {
+        width: 100%;
+    }
+
+    header .navbar ul li ul {
+        position: relative;
+        width: 100%;
+    }
+
+    header .navbar ul li ul li {
+        background: rgba(16, 62, 88, 0.6);
+    }
+
+    @media(max-width: 576px) {
+        header .navbar ul li a {
+            font-size: 18px;
+            padding: 15px;
+        }
+    }
+}
+
+main {
+    margin-top: 80px; /* Espacio para que no se superponga el header */
+    flex: 1; /* Permitir que el main crezca */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.trabajos-container {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los botones se ajusten a múltiples líneas */
+    justify-content: center; /* Centrar los botones en el contenedor */
+    margin: 40px 20px 0; /* Margen superior para evitar que se superponga con el header */
+}
+
+.trabajo-item {
+    margin: 15px; /* Espaciado entre botones */
+    flex: 0 1 250px; /* Cada item ocupa al menos 250px */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro del item */
+}
+
+.trabajo-info {
+    opacity: 0; /* Inicialmente oculto */
+    transform: translateY(20px); /* Desplazado hacia abajo */
+    transition: opacity 0.6s ease, transform 0.5s ease; /* Transiciones para la aparición */
+    background: rgba(24, 70, 129, 0.8);
+    color: #ffffff;
+    padding: 20px 30px; /* Botón más grande */
+    border-radius: 5px;
+    
+    text-align: center;
+    display: flex; /* Agregar esta línea */
+    flex-direction: column; /* Agregar esta línea */
+    align-items: center; /* Agregar esta línea para centrar el contenido */
+}
+
+.trabajo-info.visible {
+    opacity: 1; /* Aparece */
+    transform: translateY(0); /* Regresa a su posición original */
+}
+
+.trabajo-info h2 {
+    margin-bottom: 5px; /* Espacio entre el título y el texto */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+}
+
+.trabajo-info span {
+    display: block; /* Hacer que el texto "Semana" esté en una nueva línea */
+}
+
+.ver-trabajo-button {
+    background: #d64130dc; /* Color del botón "Ver Trabajo" */
+    color: #080808; /* Color del texto */
+    padding: 10px 20px; /* Tamaño del botón */
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px; /* Margen superior para separar de la información */
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none; /* Quita el subrayado */
+}
+
+.github-button {
+    background: #363c42; /* Color de fondo de GitHub */
+    color: #ffffff; /* Color del texto */
+    padding: 10px 20px; /* Tamaño del botón */
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px; /* Margen superior para separar de la información */
+    margin-left: 10px; /* Espacio entre los botones */
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none; /* Quita el subrayado */
+    display: flex;
+    align-items: center;
+}
+
+.github-logo {
+    width: 20px; /* Tamaño del logo */
+    height: 20px; /* Tamaño del logo */
+    margin-right: 5px; /* Espacio entre el logo y el texto */
+}
+
+.ver-trabajo-button:hover {
+    background: #080808; /* Cambia el color de fondo al pasar el ratón */
+    color: #ffffff; /* Cambia el color del texto al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
+}
+
+.github-button:hover {
+    background: #1b1f23; /* Cambia el color de fondo al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
+}
+
+footer {
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    background: rgba(6, 81, 100, 0.8);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #dafffa;
+}

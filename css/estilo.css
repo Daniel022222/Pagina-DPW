@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: url(../Img/fondodatos.jpg);
+}
+
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(6, 81, 100, 0.904);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    padding: 0 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+header .logo-img {
+    width: 70px; 
+    height: auto;
+    border-radius: 50%;
+    margin-right: 10px; 
+}
+
+header .navbar ul {
+    list-style: none;
+}
+
+header .navbar ul li {
+    position: relative;
+    float: left;
+}
+
+header .navbar ul li a {
+    font-size: 20px;
+    padding: 20px;
+    color: #ffffff;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+header .navbar ul li a:hover,
+header .navbar ul li a:focus {
+    background: #dafffa;
+    color: #080808;
+}
+
+header .navbar ul li ul {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    background: rgba(24, 70, 129, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+header .navbar ul li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+#menu-bar {
+    display: none;
+}
+
+header label {
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+    display: none;
+}
+
+@media(max-width: 991px) {
+    header {
+        padding: 20px;
+    }
+
+    header label {
+        display: block;
+    }
+
+    header .navbar {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(24, 87, 150, 0.54);
+        border-top: 1px solid rgba(0,0,0,.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #menu-bar:checked ~ .navbar {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    header .navbar ul li {
+        width: 100%;
+    }
+
+    header .navbar ul li ul {
+        position: relative;
+        width: 100%;
+    }
+
+    header .navbar ul li ul li {
+        background: rgba(16, 62, 88, 0.6);
+    }
+
+    @media(max-width: 576px) {
+        header .navbar ul li a {
+            font-size: 18px;
+            padding: 15px;
+        }
+    }
+}
+
+main {
+    margin-top: 100px; /* Para evitar que el contenido quede detrás del header */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-info {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Añadido para el efecto */
+}
+
+.course-info:hover {
+    transform: scale(1.01); /* Zoom al pasar el cursor */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Aumentar sombra */
+}
+
+.course-info h1, 
+.course-info h2 {
+    color: #065164;
+    margin-bottom: 15px;
+}
+
+.course-info p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+footer {
+    margin-top: auto;
+    background: rgba(6, 81, 100, 0.8);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
